@@ -1,0 +1,693 @@
+/* --- Estilos Generales para el sitio de la Dra. Zúlyce Malavé --- */
+
+/* --- Reseteo Básico y Box Sizing --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* --- Variables de Color (Paleta de la Marca) --- */
+:root {
+    --color-lila: #C9C8E3;         
+    --color-lila-oscuro: #A5A3D1; 
+    --color-turquesa: #65C8B9;     
+    --color-turquesa-oscuro: #50B0A0; 
+    --color-azul-claro: #A9BCE3;   
+    
+    --color-fondo-claro: #FDFEFE;  
+    --color-fondo-seccion: #F8F9FA; 
+    --color-fondo-sobre-home: #FFFFFF; 
+    --color-texto-principal: #343A40; 
+    --color-texto-secundario: #5A6268; 
+    --color-blanco: #FFFFFF;
+    --color-borde-suave: #E0E0E0;
+    --color-overlay-hero: rgba(0, 0, 0, 0.3); 
+    --color-overlay-page-title: rgba(40, 50, 70, 0.5); 
+    --color-form-success: #28a745;
+    --color-form-error: #dc3545;
+
+
+    --font-principal: 'Inter', sans-serif; 
+    --font-titulos: 'Montserrat', sans-serif; 
+
+    --header-height: 90px; 
+}
+
+/* --- Estilos Generales del Body --- */
+html {
+    scroll-behavior: smooth; 
+}
+body {
+    font-family: var(--font-principal);
+    background-color: var(--color-fondo-claro);
+    color: var(--color-texto-principal);
+    line-height: 1.7; 
+    font-size: 16px; 
+}
+
+/* --- Contenedor Principal --- */
+.container {
+    width: 90%;
+    max-width: 1100px; 
+    margin: 0 auto; 
+    padding: 0 15px; 
+}
+
+/* --- Estilos para Enlaces --- */
+a {
+    color: var(--color-turquesa);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+a:hover, a:focus { 
+    color: var(--color-turquesa-oscuro);
+    text-decoration: underline; 
+}
+
+/* --- Botones CTA (Call to Action) --- */
+.cta-button {
+    display: inline-block;
+    background-color: var(--color-turquesa);
+    color: var(--color-blanco);
+    padding: 12px 25px;
+    border-radius: 25px; 
+    text-decoration: none;
+    font-weight: bold;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    border: none;
+    cursor: pointer;
+    font-size: 1em;
+}
+
+.cta-button:hover, .cta-button:focus {
+    background-color: var(--color-turquesa-oscuro);
+    color: var(--color-blanco);
+    transform: translateY(-2px); 
+    text-decoration: none;
+}
+
+.cta-button a { 
+    color: var(--color-blanco);
+    text-decoration: none;
+}
+.cta-button a:hover {
+    color: var(--color-blanco);
+    text-decoration: none;
+}
+
+
+/* --- Encabezado (Header) --- */
+.site-header {
+    background-color: var(--color-blanco);
+    padding: 15px 0;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05); 
+    position: sticky; 
+    top: 0;
+    z-index: 1000;
+    width: 100%;
+    height: var(--header-height); 
+    display: flex; 
+    align-items: center; 
+}
+
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%; 
+}
+
+.logo img {
+    height: 60px; 
+    width: auto;
+    vertical-align: middle; 
+}
+
+.main-nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+}
+
+.main-nav li {
+    margin-left: 25px; 
+}
+
+.main-nav a {
+    color: var(--color-texto-principal);
+    font-weight: 500; 
+    font-size: 0.95em;
+    padding: 5px 0;
+    border-bottom: 2px solid transparent; 
+}
+
+.main-nav a:hover,
+.main-nav a:focus,
+.main-nav a.active {
+    color: var(--color-turquesa);
+    border-bottom-color: var(--color-turquesa);
+    text-decoration: none;
+}
+
+.header-cta {
+    padding: 10px 20px; 
+    font-size: 0.9em;
+}
+
+
+/* --- Sección Héroe (Hero Section) --- */
+.hero-section {
+    background-image: linear-gradient(var(--color-overlay-hero), var(--color-overlay-hero)), url('../assets/images/hero-background.jpg');
+    background-size: cover; 
+    background-position: center center; 
+    background-repeat: no-repeat;
+    background-attachment: fixed; 
+
+    height: calc(100vh - var(--header-height)); 
+    min-height: 400px; 
+    
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
+    text-align: center; 
+    position: relative; 
+    color: var(--color-blanco); 
+}
+
+.hero-content {
+    max-width: 700px; 
+    padding: 20px;
+}
+
+.hero-section h1 {
+    font-family: var(--font-titulos);
+    font-size: 3em; 
+    margin-bottom: 20px;
+    line-height: 1.2;
+}
+
+.hero-section p {
+    font-size: 1.25em; 
+    margin-bottom: 30px;
+}
+
+.hero-section .cta-button {
+    background-color: var(--color-lila); 
+    color: var(--color-texto-principal); 
+}
+
+.hero-section .cta-button:hover, .hero-section .cta-button:focus {
+    background-color: var(--color-lila-oscuro);
+}
+
+
+/* --- Sección Introductoria (Genérica) --- */
+.intro-section { 
+    padding: 60px 0;
+    text-align: center;
+    background-color: var(--color-fondo-seccion); 
+}
+
+.intro-section h2 {
+    font-family: var(--font-titulos);
+    font-size: 2.2em;
+    margin-bottom: 20px;
+    color: var(--color-texto-principal);
+}
+
+.intro-section p {
+    font-size: 1.1em;
+    max-width: 750px;
+    margin-left: auto;
+    margin-right: auto;
+    color: var(--color-texto-secundario);
+}
+
+/* --- Estilos para la Sección "Sobre Mí" en el Index --- */
+.home-about-section {
+    padding: 80px 0; 
+    background-color: var(--color-fondo-sobre-home); 
+}
+
+.home-about-content {
+    display: flex;
+    align-items: center; 
+    gap: 50px; 
+}
+
+.home-about-image {
+    flex-basis: 30%; 
+    text-align: center; 
+    position: relative; 
+}
+
+.profile-pic-container {
+    position: relative;
+    width: 260px; 
+    height: 260px;
+    margin: 0 auto; 
+    border-radius: 50%;
+    padding: 8px; 
+    background: linear-gradient(45deg, var(--color-lila), var(--color-turquesa), var(--color-azul-claro), var(--color-lila));
+    background-size: 400% 400%;
+    animation: gradientBorderAnimation 10s ease infinite;
+}
+
+@keyframes gradientBorderAnimation {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+.profile-pic-home {
+    width: 100%; 
+    height: 100%;
+    object-fit: cover; 
+    border-radius: 50%; 
+    display: block; 
+    box-shadow: 0 8px 25px rgba(0,0,0,0.15); 
+}
+
+
+.home-about-text {
+    flex-basis: 70%; 
+}
+
+.home-about-text h2 { 
+    font-family: var(--font-titulos);
+    font-size: 2.4em; 
+    color: var(--color-turquesa-oscuro);
+    margin-bottom: 8px;
+}
+.home-about-text h3 { 
+    font-family: var(--font-titulos);
+    font-size: 1.6em;
+    color: var(--color-texto-principal);
+    margin-bottom: 20px;
+    font-weight: 500;
+}
+
+.lead-paragraph-home {
+    font-size: 1.15em; 
+    color: var(--color-texto-secundario);
+    margin-bottom: 20px;
+    font-style: italic;
+}
+
+.home-about-text p {
+    margin-bottom: 18px;
+    line-height: 1.75;
+}
+
+.home-about-text h4 { 
+    font-family: var(--font-titulos);
+    font-size: 1.25em; 
+    color: var(--color-texto-principal);
+    margin-top: 25px;
+    margin-bottom: 15px;
+}
+
+.home-about-text ul {
+    list-style: none;
+    padding-left: 0;
+    margin-bottom: 25px;
+}
+
+.home-about-text ul li {
+    margin-bottom: 10px;
+    display: flex; 
+    align-items: center;
+    color: var(--color-texto-secundario);
+    font-size: 1.05em; 
+}
+
+/* Estilos para los iconos de Font Awesome */
+.custom-icon {
+    display: inline-block;
+    font-style: normal;
+    font-variant: normal;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    line-height: 1; 
+    vertical-align: middle; 
+    
+    margin-right: 10px;
+    font-size: 1.2em; 
+    color: var(--color-turquesa); 
+}
+
+.values-highlight-home .custom-icon {
+    color: var(--color-lila-oscuro);
+    font-size: 1.1em; 
+    margin-right: 8px;
+}
+
+
+.values-highlight-home {
+    margin-top: 25px;
+    display: flex; 
+    flex-wrap: wrap; 
+    gap: 15px; 
+}
+
+.values-highlight-home span {
+    display: flex; 
+    align-items: center;
+    font-weight: 500;
+    color: var(--color-texto-secundario);
+    background-color: var(--color-fondo-seccion);
+    padding: 8px 15px; 
+    border-radius: 20px; 
+    font-size: 0.95em;
+    border: 1px solid var(--color-borde-suave); 
+}
+
+/* --- Estilos para la Página de Contacto --- */
+.contact-title-bg {
+    background-color: var(--color-fondo-seccion); 
+    padding: 60px 0;
+    text-align: center;
+    color: var(--color-texto-principal); 
+}
+.contact-title-bg h1 {
+    font-family: var(--font-titulos);
+    font-size: 2.8em;
+    margin-bottom: 10px;
+}
+.contact-title-bg p {
+    font-size: 1.2em;
+    color: var(--color-texto-secundario); 
+}
+
+.contact-info-form-section {
+    padding: 60px 0;
+}
+
+.contact-layout {
+    display: flex;
+    gap: 40px; 
+    flex-wrap: wrap; 
+}
+
+.contact-details-aside {
+    flex: 1; 
+    min-width: 300px; 
+    background-color: var(--color-fondo-seccion);
+    padding: 30px;
+    border-radius: 8px;
+}
+
+.contact-details-aside h2 {
+    font-family: var(--font-titulos);
+    color: var(--color-turquesa-oscuro);
+    margin-bottom: 20px;
+    font-size: 1.8em;
+}
+.contact-details-aside > p { 
+    margin-bottom: 25px;
+    color: var(--color-texto-secundario);
+}
+
+.contact-item {
+    display: flex;
+    align-items: flex-start; 
+    margin-bottom: 25px;
+}
+
+.contact-item .custom-icon { 
+    font-size: 1.5em; 
+    margin-right: 15px;
+    margin-top: 3px; 
+    color: var(--color-turquesa);
+}
+
+.contact-item div strong {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 3px;
+    color: var(--color-texto-principal);
+}
+.contact-item div p {
+    margin: 0;
+    color: var(--color-texto-secundario);
+    line-height: 1.6;
+}
+.contact-item div p a {
+    color: var(--color-turquesa-oscuro);
+}
+
+
+.contact-form-section {
+    flex: 2; 
+    min-width: 300px;
+    padding: 30px;
+    background-color: var(--color-blanco);
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.07);
+}
+.contact-form-section h2 {
+    font-family: var(--font-titulos);
+    color: var(--color-turquesa-oscuro);
+    margin-bottom: 10px;
+    font-size: 1.8em;
+}
+.contact-form-section > p { 
+     margin-bottom: 25px;
+     color: var(--color-texto-secundario);
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+    color: var(--color-texto-secundario);
+}
+
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group input[type="tel"],
+.form-group textarea {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid var(--color-borde-suave);
+    border-radius: 6px;
+    font-family: var(--font-principal);
+    font-size: 1em;
+    color: var(--color-texto-principal);
+    transition: border-color 0.3s ease;
+}
+.form-group input[type="text"]:focus,
+.form-group input[type="email"]:focus,
+.form-group input[type="tel"]:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--color-turquesa);
+    box-shadow: 0 0 0 2px rgba(101, 200, 185, 0.2); 
+}
+.form-group textarea {
+    resize: vertical; 
+    min-height: 100px;
+}
+
+.form-submit-button { 
+    width: 100%; 
+    padding: 15px;
+    font-size: 1.1em;
+}
+
+/* Estilos para mensajes de estado de Formspree (si se usara) */
+/* Dado que FormSubmit maneja la redirección, estos no son críticos ahora */
+#form-status p {
+    margin-top: 15px;
+    padding: 10px;
+    border-radius: 5px;
+    text-align: center;
+}
+#form-status p.success {
+    background-color: #e6ffed;
+    color: var(--color-form-success);
+    border: 1px solid var(--color-form-success);
+}
+#form-status p.error {
+    background-color: #ffebee;
+    color: var(--color-form-error);
+    border: 1px solid var(--color-form-error);
+}
+
+
+/* --- Pie de Página (Footer) --- */
+.site-footer {
+    background-color: var(--color-texto-principal); 
+    color: var(--color-fondo-claro);
+    padding: 50px 0 20px; 
+    font-size: 0.9em;
+}
+
+.site-footer a {
+    color: var(--color-turquesa);
+}
+.site-footer a:hover, .site-footer a:focus {
+    color: var(--color-lila);
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap; 
+    gap: 30px; 
+    margin-bottom: 30px;
+}
+
+.footer-info, .footer-nav, .footer-hours {
+    flex: 1; 
+    min-width: 200px; 
+}
+
+.footer-content h4 {
+    font-family: var(--font-titulos);
+    color: var(--color-blanco);
+    margin-bottom: 15px;
+    font-size: 1.1em;
+    border-bottom: 1px solid var(--color-turquesa);
+    padding-bottom: 8px;
+    display: inline-block;
+}
+
+.footer-nav ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-nav li {
+    margin-bottom: 8px;
+}
+
+.footer-info p, .footer-hours p {
+    margin-bottom: 8px;
+    line-height: 1.6;
+}
+
+.copyright {
+    text-align: center;
+    padding-top: 20px;
+    border-top: 1px solid var(--color-texto-secundario); 
+    font-size: 0.85em;
+    color: #B0BEC5; 
+}
+
+.copyright p {
+    margin-bottom: 5px;
+}
+
+
+/* --- Media Queries para Responsividad --- */
+@media (max-width: 768px) {
+    :root {
+      --header-height: auto; 
+    }
+
+    .site-header {
+      padding-top: 10px;
+      padding-bottom: 10px;
+    }
+
+    .header-container {
+        flex-direction: column;
+        align-items: center;
+        gap: 15px; 
+    }
+
+    .main-nav {
+        margin-top: 0; 
+        width: 100%; 
+    }
+
+    .main-nav ul {
+        flex-direction: column; 
+        align-items: center; 
+        width: 100%;
+    }
+
+    .main-nav li {
+        margin-left: 0;
+        margin-bottom: 10px; 
+        width: 100%;
+        text-align: center;
+    }
+    
+    .main-nav a {
+        display: block; 
+        padding: 10px;
+    }
+    
+    .hero-section {
+        height: auto; 
+        min-height: calc(100vh - 50px); 
+        padding: 40px 0; 
+    }
+
+    .hero-section h1 {
+        font-size: 2.2em; 
+    }
+    .hero-section p {
+        font-size: 1.1em; 
+    }
+
+    .home-about-section {
+        padding: 40px 0;
+    }
+    .home-about-content {
+        flex-direction: column; 
+        text-align: center; 
+        gap: 30px;
+    }
+    .home-about-image {
+        margin-bottom: 0; 
+    }
+    .profile-pic-container { 
+        width: 220px;
+        height: 220px;
+        padding: 6px;
+    }
+    .home-about-text h2, .home-about-text h3 {
+        text-align: center;
+    }
+    .home-about-text ul {
+        text-align: left; 
+        max-width: 300px; 
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .values-highlight-home {
+        justify-content: center; 
+    }
+
+    .contact-layout {
+        flex-direction: column; /* Apilar detalles y formulario en móviles */
+    }
+    .contact-details-aside, .contact-form-section {
+        padding: 20px; /* Menos padding en móviles */
+    }
+
+
+    .footer-content {
+        flex-direction: column;
+        align-items: center;
+        text-align:center;
+    }
+    .footer-info, .footer-nav, .footer-hours {
+        margin-bottom:20px;
+        width:100%;
+    }
+    .footer-content h4{
+        display:block; 
+    }
+}
