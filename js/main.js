@@ -8,57 +8,86 @@ function setCurrentYear() {
     }
 }
 
-// --- Pequeña función para manejar el menú activo (ejemplo básico) ---
-// Esto es muy simple, para un menú más complejo se necesitaría más lógica,
-// especialmente si se carga contenido dinámicamente.
+// --- Función para manejar el menú activo (ejemplo básico) ---
 function setActiveNavLink() {
-    const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+    // Intenta obtener la página actual de una manera más robusta
+    let currentPage = window.location.pathname.substring(window.location.pathname.lastIndexOf('/') + 1);
+    if (currentPage === "" || currentPage === "index.html") { // Considera la raíz y index.html como la misma página "Inicio"
+        currentPage = "index.html"; 
+    }
+    // Si estamos en index.html y hay un hash, es una sección de la home
+    if (currentPage === "index.html" && window.location.hash) {
+         // Para el ancla "#sobre-dra"
+        if(window.location.hash === "#sobre-dra") {
+            currentPage = "#sobre-dra"; // Identificador especial para el ancla
+        }
+    }
+
+
     const navLinks = document.querySelectorAll('.main-nav a');
 
     navLinks.forEach(link => {
-        const linkPage = link.getAttribute('href').split('/').pop() || 'index.html';
-        if (linkPage === currentPage) {
+        let linkPage = link.getAttribute('href');
+        
+        // Manejo especial para el enlace de ancla "#sobre-dra" en index.html
+        if (currentPage === "#sobre-dra" && linkPage === "#sobre-dra") {
             link.classList.add('active');
-        } else {
+        } else if (linkPage.includes(currentPage) && currentPage !== "#sobre-dra") {
+             // Para las páginas normales, verifica si el href contiene la página actual
+            // y que no sea el caso especial del ancla que ya manejamos.
+            if (currentPage === "index.html" && (linkPage === "index.html" || linkPage === "./" || linkPage === "/")) {
+                link.classList.add('active');
+            } else if (linkPage.endsWith(currentPage) && currentPage !== "index.html") {
+                 link.classList.add('active');
+            } else {
+                link.classList.remove('active');
+            }
+        }
+         else {
             link.classList.remove('active');
         }
     });
 }
 
-// --- (Opcional) Hamburguesa para menú móvil ---
-// Necesitaríamos añadir el HTML para el botón de hamburguesa y adaptar el CSS
-/*
-const mobileMenuButton = document.getElementById('mobile-menu-button'); // Asumiendo que tienes un botón con este ID
-const mainNav = document.querySelector('.main-nav');
 
-if (mobileMenuButton && mainNav) {
-    mobileMenuButton.addEventListener('click', () => {
-        mainNav.classList.toggle('active'); // La clase 'active' en CSS mostraría/ocultaría el menú
+// --- Lógica para el Menú de Hamburguesa ---
+const hamburgerButton = document.getElementById('hamburger-button');
+const mainNav = document.getElementById('main-nav');
+const bodyEl = document.body; // Para evitar scroll cuando el menú está abierto
+
+if (hamburgerButton && mainNav) {
+    hamburgerButton.addEventListener('click', () => {
+        const isExpanded = hamburgerButton.getAttribute('aria-expanded') === 'true' || false;
+        hamburgerButton.setAttribute('aria-expanded', !isExpanded);
+        mainNav.classList.toggle('menu-visible');
+        hamburgerButton.classList.toggle('is-active'); // Para animar el botón de hamburguesa
+        bodyEl.classList.toggle('no-scroll'); // Para evitar scroll en el body
+    });
+
+    // Cerrar menú si se hace clic en un enlace (para SPAs o anclas en la misma página)
+    mainNav.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+            if (mainNav.classList.contains('menu-visible')) {
+                mainNav.classList.remove('menu-visible');
+                hamburgerButton.classList.remove('is-active');
+                hamburgerButton.setAttribute('aria-expanded', 'false');
+                bodyEl.classList.remove('no-scroll');
+            }
+        });
     });
 }
-*/
 
 
 // --- Inicialización de funciones cuando el DOM esté listo ---
 document.addEventListener('DOMContentLoaded', () => {
     setCurrentYear();
-    setActiveNavLink();
+    setActiveNavLink(); // Asegúrate que esto se llama después de que los elementos del DOM están listos
 
-    // Aquí puedes añadir más inicializaciones o llamadas a funciones
-    console.log("Sitio Dra. Zúlyce Malavé inicializado.");
-
-    // Ejemplo de alerta si el logo no carga (requiere que el logo tenga un id)
     const logoImg = document.getElementById('logo-img');
     if (logoImg) {
         logoImg.onerror = function() {
             console.warn("¡Atención! No se pudo cargar la imagen del logo. Verifica la ruta: " + logoImg.src);
-            // Podrías mostrar un mensaje en la UI en lugar de solo en la consola
         };
     }
-
+    console.log("Sitio Dra. Zúlyce Malavé inicializado con menú hamburguesa.");
 });
-
-// --- Más funciones pueden ir aquí ---
-// Por ejemplo, para manejar el envío de formularios (aunque usaremos Formspree),
-// para animaciones al hacer scroll, para cargar artículos del blog (si usamos Markdown y JS), etc.
-

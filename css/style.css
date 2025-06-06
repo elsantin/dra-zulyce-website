@@ -31,8 +31,8 @@
     --font-principal: 'Inter', sans-serif; 
     --font-titulos: 'Montserrat', sans-serif; 
 
-    --header-height-desktop: 90px; 
-    --header-height-mobile: auto; 
+    --header-height-desktop: 80px; /* Reducido ligeramente */
+    --header-height-mobile: 70px; /* Altura fija para el header móvil */
 }
 
 /* --- Estilos Generales del Body --- */
@@ -46,6 +46,10 @@ body {
     line-height: 1.7; 
     font-size: 16px; 
 }
+body.no-scroll {
+    overflow: hidden; /* Evita scroll en el body cuando el menú está abierto */
+}
+
 
 /* --- Contenedor Principal --- */
 .container {
@@ -102,9 +106,9 @@ a:hover, a:focus {
 /* --- Encabezado (Header) --- */
 .site-header {
     background-color: var(--color-blanco);
-    padding: 15px 0; 
+    padding: 0 15px; /* Ajustado para control de padding en container */
     box-shadow: 0 2px 5px rgba(0,0,0,0.05); 
-    position: sticky; /* Por defecto es sticky en desktop */
+    position: sticky; 
     top: 0;
     z-index: 1000;
     width: 100%;
@@ -121,16 +125,21 @@ a:hover, a:focus {
 }
 
 .logo img {
-    height: 50px; 
+    height: 45px; /* Ajustado */
     width: auto;
     vertical-align: middle; 
 }
 
+/* Estilos para el Menú de Navegación Principal (Desktop) */
+.main-nav {
+    display: flex; /* Por defecto visible en desktop */
+}
 .main-nav ul {
     list-style: none;
     padding: 0;
     margin: 0;
     display: flex;
+    align-items: center;
 }
 
 .main-nav li {
@@ -153,9 +162,42 @@ a:hover, a:focus {
     text-decoration: none;
 }
 
-.header-cta {
+.header-cta.desktop-cta { /* Botón CTA visible solo en desktop por defecto */
+    display: inline-block;
+}
+.header-cta { /* Estilos base para todos los header-cta */
     padding: 10px 20px; 
     font-size: 0.9em;
+}
+
+
+/* Botón de Hamburguesa */
+.hamburger-button {
+    display: none; /* Oculto en desktop */
+    background: none;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    z-index: 1001; /* Encima del menú */
+}
+.hamburger-button .hamburger-line {
+    display: block;
+    width: 25px;
+    height: 3px;
+    background-color: var(--color-texto-principal);
+    margin: 5px 0;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    border-radius: 3px;
+}
+/* Animación para el botón de hamburguesa a "X" */
+.hamburger-button.is-active .hamburger-line:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+}
+.hamburger-button.is-active .hamburger-line:nth-child(2) {
+    opacity: 0;
+}
+.hamburger-button.is-active .hamburger-line:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
 }
 
 
@@ -172,40 +214,24 @@ a:hover, a:focus {
     text-align: center; 
     position: relative; 
     color: var(--color-blanco); 
-    padding-top: var(--header-height-desktop); 
     min-height: 100vh; 
-}
-/* Si el body NO tiene la clase .mobile-header-sticky (ver JS), no aplicar padding-top al hero */
-/* Esto es para cuando el header en móvil es estático */
-body:not(.mobile-header-is-sticky) .hero-section {
-    padding-top: 0;
+    padding-top: var(--header-height-desktop); /* Ajuste para Desktop */
 }
 
 
-.hero-content {
-    max-width: 700px; 
-    padding: 40px 20px; 
+/* --- Estilos para la Página de Servicios, Blog, Contacto, etc. --- */
+.page-title-section { 
+    padding: 60px 0;
+    text-align: center;
+    margin-bottom: 0; 
 }
-
-.hero-section h1 {
+.page-title-section h1 {
     font-family: var(--font-titulos);
-    font-size: 3em; 
-    margin-bottom: 20px;
-    line-height: 1.2;
+    font-size: 2.8em;
+    margin-bottom: 10px;
 }
-
-.hero-section p {
-    font-size: 1.25em; 
-    margin-bottom: 30px;
-}
-
-.hero-section .cta-button {
-    background-color: var(--color-lila); 
-    color: var(--color-texto-principal); 
-}
-
-.hero-section .cta-button:hover, .hero-section .cta-button:focus {
-    background-color: var(--color-lila-oscuro);
+.page-title-section p {
+    font-size: 1.2em;
 }
 
 
@@ -872,109 +898,98 @@ body:not(.mobile-header-is-sticky) .hero-section {
 @media (max-width: 768px) {
     .site-header {
       height: var(--header-height-mobile); 
-      padding-top: 10px;
-      padding-bottom: 10px;
-      position: static; /* Header no fijo en móviles para liberar espacio */
+      padding: 0 15px; 
     }
     .hero-section {
-        padding-top: 0; /* Quitado porque el header ya no es sticky en móvil */
-        min-height: 100vh; /* Ocupa toda la altura si el header no es sticky */
+        padding-top: var(--header-height-mobile); 
     }
 
-    .header-container {
-        flex-direction: column;
-        align-items: center;
-        gap: 10px; 
-    }
-    
     .logo img {
-        height: 40px; 
+        height: 35px; 
+    }
+
+    .hamburger-button {
+        display: block; 
     }
 
     .main-nav {
-        margin-top: 0; 
-        width: 100%; 
+        display: none; 
+        position: fixed; 
+        top: 0; 
+        left: -100%; 
+        width: 80%; 
+        max-width: 300px;
+        height: 100vh;
+        background-color: var(--color-blanco);
+        box-shadow: 2px 0 5px rgba(0,0,0,0.1);
+        padding-top: calc(var(--header-height-mobile) + 20px); 
+        padding-left: 20px;
+        padding-right: 20px;
+        transition: left 0.3s ease-in-out;
+        z-index: 999; 
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .main-nav.menu-visible {
+        display: flex; 
+        left: 0; 
     }
 
     .main-nav ul {
-        flex-direction: column; 
-        align-items: center; 
+        flex-direction: column;
+        align-items: flex-start; 
         width: 100%;
     }
 
     .main-nav li {
         margin-left: 0;
-        margin-bottom: 5px; 
+        margin-bottom: 15px; 
         width: 100%;
-        text-align: center;
     }
     
     .main-nav a {
         display: block; 
-        padding: 8px; 
-        font-size: 0.9em; 
+        padding: 10px 0; 
+        font-size: 1.1em; 
+        border-bottom: 1px solid var(--color-borde-suave); 
     }
-    
-    .header-cta {
-        padding: 8px 15px; 
-        font-size: 0.85em;
-        margin-top: 5px; 
+    .main-nav a.active {
+        border-bottom-color: var(--color-turquesa); 
     }
-    
-    .hero-section h1 {
-        font-size: 2em; 
-    }
-    .hero-section p {
-        font-size: 1.05em; 
+    .main-nav li:last-child a {
+        border-bottom: none; 
     }
 
-    .home-about-section {
-        padding: 40px 0;
+    .header-cta.desktop-cta { 
+        display: none;
     }
-    .home-about-content {
-        flex-direction: column; 
-        text-align: center; 
-        gap: 30px;
+    .main-nav .mobile-cta-container {
+        margin-top: 30px;
+        width: 100%;
     }
-    .home-about-image {
-        margin-bottom: 0; 
-    }
-    .profile-pic-container { 
-        width: 200px; 
-        height: 200px;
-        padding: 6px;
-    }
-    .home-about-text h2, .home-about-text h3 {
+     .main-nav .mobile-cta-container .cta-button {
+        width: 100%;
         text-align: center;
-    }
+     }
+
+
+    .hero-section h1 { font-size: 2em; }
+    .hero-section p { font-size: 1.05em; }
+    .page-title-section h1 { font-size: 2em; }
+    .page-title-section p { font-size: 1.05em; }
+
+    .home-about-content { flex-direction: column; text-align: center; gap: 30px; }
+    .home-about-image { margin-bottom: 0; }
+    .profile-pic-container { width: 200px; height: 200px; padding: 6px;}
     .home-about-text h2 { font-size: 2em; }
     .home-about-text h3 { font-size: 1.4em; }
+    .home-about-text ul { text-align: left; max-width: 280px; margin-left: auto; margin-right: auto;}
+    .values-highlight-home { justify-content: center; }
+    .values-highlight-home span { font-size: 0.9em; padding: 6px 12px; }
 
-    .home-about-text ul {
-        text-align: left; 
-        max-width: 280px; 
-        margin-left: auto;
-        margin-right: auto;
-    }
-    .values-highlight-home {
-        justify-content: center; 
-    }
-    .values-highlight-home span {
-        font-size: 0.9em;
-        padding: 6px 12px;
-    }
-
-
-    .contact-layout {
-        flex-direction: column; 
-    }
-    .contact-details-aside, .contact-form-section {
-        padding: 20px; 
-    }
-    .contact-title-bg h1, .servicios-title-bg h1, .blog-title-bg h1 { font-size: 2em; }
-    .contact-title-bg p, .servicios-title-bg p, .blog-title-bg p { font-size: 1.05em; }
+    .contact-layout { flex-direction: column; }
+    .contact-details-aside, .contact-form-section { padding: 20px; }
     
-
     .services-grid { grid-template-columns: 1fr; }
     .service-card { padding: 20px; }
     .service-card-icon { font-size: 2.2em; margin-bottom: 15px;}
@@ -985,17 +1000,7 @@ body:not(.mobile-header-is-sticky) .hero-section {
     .blog-post-content { padding: 20px; }
     .blog-post-title { font-size: 1.2em; }
 
-
-    .footer-content {
-        flex-direction: column;
-        align-items: center;
-        text-align:center;
-    }
-    .footer-info, .footer-nav, .footer-hours {
-        margin-bottom:20px;
-        width:100%;
-    }
-    .footer-content h4{
-        display:block; 
-    }
+    .footer-content { flex-direction: column; align-items: center; text-align:center;}
+    .footer-info, .footer-nav, .footer-hours { margin-bottom:20px; width:100%;}
+    .footer-content h4{ display:block; }
 }

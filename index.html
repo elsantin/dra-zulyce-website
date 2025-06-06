@@ -4,13 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <!-- Metas para SEO -->
     <title>Dra. Zúlyce Malavé - Ginecología Regenerativa y Funcional</title>
     <meta name="description" content="Especialista en ginecología regenerativa, funcional y estética. Ofrecemos tratamientos innovadores como láser, ozono y más para el bienestar femenino.">
     <meta name="author" content="Dra. Zúlyce Malavé">
     <meta name="keywords" content="ginecologia regenerativa, vph, incontinencia urinaria, laser ginecologico, zulyce malave, ginecologo venezuela">
 
-    <!-- Metas para Redes Sociales (Open Graph) -->
     <meta property="og:title" content="Dra. Zúlyce Malavé - Ginecología Regenerativa y Funcional">
     <meta property="og:description" content="Tratamientos de vanguardia para la salud íntima femenina con un enfoque humano y profesional.">
     <meta property="og:image" content="assets/images/logo-dra-zulyce.jpg"> 
@@ -18,12 +16,8 @@
     <meta property="og:type" content="website">
     <meta property="og:locale" content="es_VE">
 
-    <!-- Enlace a la hoja de estilos CSS -->
     <link rel="stylesheet" href="css/style.css">
-
-    <!-- Font Awesome CDN -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" xintegrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-
 </head>
 <body>
 
@@ -34,7 +28,14 @@
                     <img src="assets/images/logo-dra-zulyce.jpg" alt="Logo Dra. Zúlyce Malavé" id="logo-img">
                 </a>
             </div>
-            <nav class="main-nav">
+            
+            <button class="hamburger-button" id="hamburger-button" aria-label="Abrir menú" aria-expanded="false">
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+            </button>
+
+            <nav class="main-nav" id="main-nav">
                 <ul>
                     <li><a href="index.html" class="active">Inicio</a></li>
                     <li><a href="#sobre-dra">Sobre Mí</a></li> 
@@ -43,7 +44,7 @@
                     <li><a href="contacto.html">Contacto</a></li>
                 </ul>
             </nav>
-            <button class="cta-button header-cta"><a href="contacto.html">Agendar Cita</a></button>
+            <button class="cta-button header-cta desktop-cta"><a href="contacto.html">Agendar Cita</a></button>
         </div>
     </header>
 
