@@ -216,8 +216,32 @@ a:hover, a:focus {
     color: var(--color-blanco); 
     min-height: 100vh; 
     padding-top: var(--header-height-desktop); /* Ajuste para Desktop */
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
+    text-align: center; 
+    color: var(--color-blanco); 
+    min-height: 100vh; 
 }
 
+.hero-content {
+    max-width: 700px; 
+    padding: 40px 20px; 
+}
+
+.hero-section h1 {
+    font-family: var(--font-titulos);
+    font-size: 3em; 
+    margin-bottom: 20px;
+    line-height: 1.2;
+}
+
+.hero-section p {
+    font-size: 1.25em; 
+    margin-bottom: 30px;
+}
+
+}
 
 /* --- Estilos para la Página de Servicios, Blog, Contacto, etc. --- */
 .page-title-section { 
