@@ -1,5 +1,6 @@
 /* --- Estilos Generales para el sitio de la Dra. Zúlyce Malavé --- */
 
+/* ... (Todos los estilos anteriores: Reset, Variables, Body, Container, Links, CTA Buttons, Header, Hero, Intro, Home About, Contacto, Servicios)... */
 /* --- Reseteo Básico y Box Sizing --- */
 * {
     margin: 0;
@@ -367,6 +368,7 @@ a:hover, a:focus {
 }
 
 /* --- Estilos para la Página de Contacto --- */
+/* ... (Estilos de Contacto) ... */
 .contact-title-bg {
     background-color: var(--color-fondo-seccion); 
     padding: 60px 0;
@@ -502,9 +504,6 @@ a:hover, a:focus {
     padding: 15px;
     font-size: 1.1em;
 }
-
-/* Estilos para mensajes de estado de Formspree (si se usara) */
-/* Dado que FormSubmit maneja la redirección, estos no son críticos ahora */
 #form-status p {
     margin-top: 15px;
     padding: 10px;
@@ -520,6 +519,287 @@ a:hover, a:focus {
     background-color: #ffebee;
     color: var(--color-form-error);
     border: 1px solid var(--color-form-error);
+}
+
+/* --- Estilos para la Página de Servicios --- */
+/* ... (Estilos de Servicios) ... */
+.servicios-title-bg {
+    background-color: var(--color-lila-oscuro); 
+    color: var(--color-blanco);
+    padding: 70px 0;
+    text-align: center;
+}
+.servicios-title-bg h1 {
+    font-family: var(--font-titulos);
+    font-size: 3em;
+    margin-bottom: 10px;
+}
+.servicios-title-bg p {
+    font-size: 1.25em;
+    opacity: 0.9;
+}
+
+.services-intro-text {
+    padding: 40px 0;
+    text-align: center;
+    font-size: 1.1em;
+    color: var(--color-texto-secundario);
+    max-width: 800px;
+    margin-bottom: 30px; 
+}
+
+.services-grid-section {
+    padding-bottom: 60px;
+}
+.services-grid-section h2 { 
+    text-align: center;
+    font-family: var(--font-titulos);
+    font-size: 2.2em;
+    color: var(--color-texto-principal);
+    margin-bottom: 40px;
+}
+
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
+    gap: 30px;
+}
+
+.service-card {
+    background-color: var(--color-blanco);
+    border-radius: 8px;
+    padding: 30px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.service-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.12);
+}
+
+.service-card-icon {
+    font-size: 2.8em; 
+    color: var(--color-turquesa);
+    margin-bottom: 20px;
+    line-height: 1;
+}
+.service-card-icon .custom-icon { 
+    font-size: inherit; 
+    margin-right: 0; 
+}
+
+
+.service-card-title {
+    font-family: var(--font-titulos);
+    font-size: 1.5em;
+    color: var(--color-texto-principal);
+    margin-bottom: 15px;
+}
+
+.service-card-description {
+    font-size: 0.95em;
+    color: var(--color-texto-secundario);
+    line-height: 1.6;
+    flex-grow: 1; 
+    margin-bottom: 20px;
+}
+.service-card-link {
+    display: inline-block;
+    margin-top: auto; 
+    color: var(--color-turquesa-oscuro);
+    font-weight: 600;
+    text-decoration: none;
+}
+.service-card-link:hover {
+    text-decoration: underline;
+}
+.service-card-link i {
+    margin-left: 5px;
+    font-size: 0.9em;
+}
+
+.cta-section-servicios { 
+    background-color: var(--color-lila);
+    color: var(--color-texto-principal);
+    padding: 50px 0;
+    text-align: center;
+}
+.cta-section-servicios h2 {
+    font-family: var(--font-titulos);
+    font-size: 2em;
+    margin-bottom: 15px;
+}
+.cta-section-servicios p {
+    margin-bottom: 25px;
+    font-size: 1.1em;
+    opacity: 0.9;
+}
+.cta-section-servicios .cta-button {
+    background-color: var(--color-turquesa);
+    color: var(--color-blanco);
+}
+.cta-section-servicios .cta-button:hover, .cta-section-servicios .cta-button:focus {
+    background-color: var(--color-turquesa-oscuro);
+}
+
+
+/* --- Estilos para la Página de Blog --- */
+.blog-title-bg {
+    background-color: var(--color-turquesa-oscuro); /* Un color diferente para el blog */
+    color: var(--color-blanco);
+    padding: 70px 0;
+    text-align: center;
+}
+.blog-title-bg h1 {
+    font-family: var(--font-titulos);
+    font-size: 3em;
+    margin-bottom: 10px;
+}
+.blog-title-bg p {
+    font-size: 1.25em;
+    opacity: 0.9;
+}
+
+.blog-intro-text { /* Similar a .services-intro-text */
+    padding: 40px 0;
+    text-align: center;
+    font-size: 1.1em;
+    color: var(--color-texto-secundario);
+    max-width: 800px;
+    margin-bottom: 30px;
+}
+
+.blog-posts-section {
+    padding-bottom: 60px;
+}
+.blog-posts-section h2 { /* Título "Últimas Entradas" */
+    text-align: center;
+    font-family: var(--font-titulos);
+    font-size: 2.2em;
+    color: var(--color-texto-principal);
+    margin-bottom: 40px;
+}
+
+.blog-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); /* Ajustar minmax para tarjetas de blog */
+    gap: 30px;
+}
+
+.blog-post-card {
+    background-color: var(--color-blanco);
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.07);
+    overflow: hidden; /* Para que la imagen (si se añade) no se salga del borde redondeado */
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.blog-post-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+}
+
+.blog-post-image { /* Estilo para la imagen del post si se añade */
+    width: 100%;
+    height: 200px; /* Altura fija para la imagen o ajustar según diseño */
+    object-fit: cover; /* Cubre el espacio sin deformar */
+}
+
+.blog-post-content {
+    padding: 25px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1; /* Para que el contenido ocupe el espacio y el botón "Leer más" quede abajo */
+}
+
+.blog-post-meta {
+    font-size: 0.85em;
+    color: var(--color-texto-secundario);
+    margin-bottom: 10px;
+}
+.blog-post-meta span {
+    margin-right: 15px;
+}
+.blog-post-meta i {
+    margin-right: 5px;
+    color: var(--color-lila-oscuro);
+}
+
+.blog-post-title {
+    font-family: var(--font-titulos);
+    font-size: 1.4em;
+    color: var(--color-texto-principal);
+    margin-bottom: 10px;
+    line-height: 1.3;
+}
+.blog-post-title:hover { /* Para que el título también sea un enlace (se añadiría <a> en HTML) */
+    color: var(--color-turquesa);
+}
+
+.blog-post-excerpt {
+    font-size: 0.95em;
+    color: var(--color-texto-secundario);
+    line-height: 1.6;
+    margin-bottom: 20px;
+    flex-grow: 1;
+}
+
+.blog-post-link {
+    display: inline-block;
+    margin-top: auto; /* Empuja el enlace al final */
+    color: var(--color-turquesa-oscuro);
+    font-weight: 600;
+    text-decoration: none;
+    align-self: flex-start; /* Alinear a la izquierda */
+}
+.blog-post-link:hover {
+    text-decoration: underline;
+}
+.blog-post-link i {
+    margin-left: 5px;
+    font-size: 0.9em;
+}
+
+/* Estilos para paginación (Placeholder) */
+.pagination-nav {
+    margin-top: 40px;
+    display: flex;
+    justify-content: center;
+}
+.pagination {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    gap: 5px;
+}
+.page-item .page-link {
+    display: block;
+    padding: 8px 12px;
+    color: var(--color-turquesa);
+    border: 1px solid var(--color-borde-suave);
+    border-radius: 4px;
+    text-decoration: none;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+.page-item .page-link:hover {
+    background-color: var(--color-fondo-seccion);
+    border-color: var(--color-turquesa);
+}
+.page-item.active .page-link {
+    background-color: var(--color-turquesa);
+    color: var(--color-blanco);
+    border-color: var(--color-turquesa);
+}
+.page-item.disabled .page-link {
+    color: #adb5bd;
+    pointer-events: none;
+    background-color: transparent;
+    border-color: var(--color-borde-suave);
 }
 
 
@@ -590,6 +870,7 @@ a:hover, a:focus {
 
 /* --- Media Queries para Responsividad --- */
 @media (max-width: 768px) {
+    /* ... (Media queries anteriores para header, hero, home-about, contacto, servicios) ... */
     :root {
       --header-height: auto; 
     }
@@ -671,11 +952,19 @@ a:hover, a:focus {
     }
 
     .contact-layout {
-        flex-direction: column; /* Apilar detalles y formulario en móviles */
+        flex-direction: column; 
     }
     .contact-details-aside, .contact-form-section {
-        padding: 20px; /* Menos padding en móviles */
+        padding: 20px; 
     }
+
+    .servicios-title-bg h1 { font-size: 2.2em; }
+    .servicios-title-bg p { font-size: 1.1em; }
+    .services-grid { grid-template-columns: 1fr; /* Una columna en móviles */ }
+
+    .blog-title-bg h1 { font-size: 2.2em; }
+    .blog-title-bg p { font-size: 1.1em; }
+    .blog-grid { grid-template-columns: 1fr; /* Una columna en móviles */ }
 
 
     .footer-content {
