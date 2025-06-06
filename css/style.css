@@ -1,6 +1,5 @@
 /* --- Estilos Generales para el sitio de la Dra. Zúlyce Malavé --- */
 
-/* ... (Todos los estilos anteriores: Reset, Variables, Body, Container, Links, CTA Buttons, Header, Hero, Intro, Home About, Contacto, Servicios)... */
 /* --- Reseteo Básico y Box Sizing --- */
 * {
     margin: 0;
@@ -32,7 +31,8 @@
     --font-principal: 'Inter', sans-serif; 
     --font-titulos: 'Montserrat', sans-serif; 
 
-    --header-height: 90px; 
+    --header-height-desktop: 90px; 
+    --header-height-mobile: auto; 
 }
 
 /* --- Estilos Generales del Body --- */
@@ -102,13 +102,13 @@ a:hover, a:focus {
 /* --- Encabezado (Header) --- */
 .site-header {
     background-color: var(--color-blanco);
-    padding: 15px 0;
+    padding: 15px 0; 
     box-shadow: 0 2px 5px rgba(0,0,0,0.05); 
-    position: sticky; 
+    position: sticky; /* Por defecto es sticky en desktop */
     top: 0;
     z-index: 1000;
     width: 100%;
-    height: var(--header-height); 
+    height: var(--header-height-desktop); 
     display: flex; 
     align-items: center; 
 }
@@ -121,7 +121,7 @@ a:hover, a:focus {
 }
 
 .logo img {
-    height: 60px; 
+    height: 50px; 
     width: auto;
     vertical-align: middle; 
 }
@@ -166,21 +166,25 @@ a:hover, a:focus {
     background-position: center center; 
     background-repeat: no-repeat;
     background-attachment: fixed; 
-
-    height: calc(100vh - var(--header-height)); 
-    min-height: 400px; 
-    
     display: flex; 
     align-items: center; 
     justify-content: center; 
     text-align: center; 
     position: relative; 
     color: var(--color-blanco); 
+    padding-top: var(--header-height-desktop); 
+    min-height: 100vh; 
 }
+/* Si el body NO tiene la clase .mobile-header-sticky (ver JS), no aplicar padding-top al hero */
+/* Esto es para cuando el header en móvil es estático */
+body:not(.mobile-header-is-sticky) .hero-section {
+    padding-top: 0;
+}
+
 
 .hero-content {
     max-width: 700px; 
-    padding: 20px;
+    padding: 40px 20px; 
 }
 
 .hero-section h1 {
@@ -368,7 +372,6 @@ a:hover, a:focus {
 }
 
 /* --- Estilos para la Página de Contacto --- */
-/* ... (Estilos de Contacto) ... */
 .contact-title-bg {
     background-color: var(--color-fondo-seccion); 
     padding: 60px 0;
@@ -522,7 +525,6 @@ a:hover, a:focus {
 }
 
 /* --- Estilos para la Página de Servicios --- */
-/* ... (Estilos de Servicios) ... */
 .servicios-title-bg {
     background-color: var(--color-lila-oscuro); 
     color: var(--color-blanco);
@@ -646,10 +648,9 @@ a:hover, a:focus {
     background-color: var(--color-turquesa-oscuro);
 }
 
-
 /* --- Estilos para la Página de Blog --- */
 .blog-title-bg {
-    background-color: var(--color-turquesa-oscuro); /* Un color diferente para el blog */
+    background-color: var(--color-turquesa-oscuro); 
     color: var(--color-blanco);
     padding: 70px 0;
     text-align: center;
@@ -664,7 +665,7 @@ a:hover, a:focus {
     opacity: 0.9;
 }
 
-.blog-intro-text { /* Similar a .services-intro-text */
+.blog-intro-text { 
     padding: 40px 0;
     text-align: center;
     font-size: 1.1em;
@@ -676,7 +677,7 @@ a:hover, a:focus {
 .blog-posts-section {
     padding-bottom: 60px;
 }
-.blog-posts-section h2 { /* Título "Últimas Entradas" */
+.blog-posts-section h2 { 
     text-align: center;
     font-family: var(--font-titulos);
     font-size: 2.2em;
@@ -686,7 +687,7 @@ a:hover, a:focus {
 
 .blog-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); /* Ajustar minmax para tarjetas de blog */
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); 
     gap: 30px;
 }
 
@@ -694,7 +695,7 @@ a:hover, a:focus {
     background-color: var(--color-blanco);
     border-radius: 8px;
     box-shadow: 0 5px 15px rgba(0,0,0,0.07);
-    overflow: hidden; /* Para que la imagen (si se añade) no se salga del borde redondeado */
+    overflow: hidden; 
     display: flex;
     flex-direction: column;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -704,17 +705,17 @@ a:hover, a:focus {
     box-shadow: 0 10px 25px rgba(0,0,0,0.1);
 }
 
-.blog-post-image { /* Estilo para la imagen del post si se añade */
+.blog-post-image { 
     width: 100%;
-    height: 200px; /* Altura fija para la imagen o ajustar según diseño */
-    object-fit: cover; /* Cubre el espacio sin deformar */
+    height: 200px; 
+    object-fit: cover; 
 }
 
 .blog-post-content {
     padding: 25px;
     display: flex;
     flex-direction: column;
-    flex-grow: 1; /* Para que el contenido ocupe el espacio y el botón "Leer más" quede abajo */
+    flex-grow: 1; 
 }
 
 .blog-post-meta {
@@ -737,7 +738,7 @@ a:hover, a:focus {
     margin-bottom: 10px;
     line-height: 1.3;
 }
-.blog-post-title:hover { /* Para que el título también sea un enlace (se añadiría <a> en HTML) */
+.blog-post-title:hover { 
     color: var(--color-turquesa);
 }
 
@@ -751,11 +752,11 @@ a:hover, a:focus {
 
 .blog-post-link {
     display: inline-block;
-    margin-top: auto; /* Empuja el enlace al final */
+    margin-top: auto; 
     color: var(--color-turquesa-oscuro);
     font-weight: 600;
     text-decoration: none;
-    align-self: flex-start; /* Alinear a la izquierda */
+    align-self: flex-start; 
 }
 .blog-post-link:hover {
     text-decoration: underline;
@@ -765,7 +766,6 @@ a:hover, a:focus {
     font-size: 0.9em;
 }
 
-/* Estilos para paginación (Placeholder) */
 .pagination-nav {
     margin-top: 40px;
     display: flex;
@@ -870,20 +870,25 @@ a:hover, a:focus {
 
 /* --- Media Queries para Responsividad --- */
 @media (max-width: 768px) {
-    /* ... (Media queries anteriores para header, hero, home-about, contacto, servicios) ... */
-    :root {
-      --header-height: auto; 
-    }
-
     .site-header {
+      height: var(--header-height-mobile); 
       padding-top: 10px;
       padding-bottom: 10px;
+      position: static; /* Header no fijo en móviles para liberar espacio */
+    }
+    .hero-section {
+        padding-top: 0; /* Quitado porque el header ya no es sticky en móvil */
+        min-height: 100vh; /* Ocupa toda la altura si el header no es sticky */
     }
 
     .header-container {
         flex-direction: column;
         align-items: center;
-        gap: 15px; 
+        gap: 10px; 
+    }
+    
+    .logo img {
+        height: 40px; 
     }
 
     .main-nav {
@@ -899,27 +904,28 @@ a:hover, a:focus {
 
     .main-nav li {
         margin-left: 0;
-        margin-bottom: 10px; 
+        margin-bottom: 5px; 
         width: 100%;
         text-align: center;
     }
     
     .main-nav a {
         display: block; 
-        padding: 10px;
+        padding: 8px; 
+        font-size: 0.9em; 
     }
     
-    .hero-section {
-        height: auto; 
-        min-height: calc(100vh - 50px); 
-        padding: 40px 0; 
+    .header-cta {
+        padding: 8px 15px; 
+        font-size: 0.85em;
+        margin-top: 5px; 
     }
-
+    
     .hero-section h1 {
-        font-size: 2.2em; 
+        font-size: 2em; 
     }
     .hero-section p {
-        font-size: 1.1em; 
+        font-size: 1.05em; 
     }
 
     .home-about-section {
@@ -934,22 +940,30 @@ a:hover, a:focus {
         margin-bottom: 0; 
     }
     .profile-pic-container { 
-        width: 220px;
-        height: 220px;
+        width: 200px; 
+        height: 200px;
         padding: 6px;
     }
     .home-about-text h2, .home-about-text h3 {
         text-align: center;
     }
+    .home-about-text h2 { font-size: 2em; }
+    .home-about-text h3 { font-size: 1.4em; }
+
     .home-about-text ul {
         text-align: left; 
-        max-width: 300px; 
+        max-width: 280px; 
         margin-left: auto;
         margin-right: auto;
     }
     .values-highlight-home {
         justify-content: center; 
     }
+    .values-highlight-home span {
+        font-size: 0.9em;
+        padding: 6px 12px;
+    }
+
 
     .contact-layout {
         flex-direction: column; 
@@ -957,14 +971,19 @@ a:hover, a:focus {
     .contact-details-aside, .contact-form-section {
         padding: 20px; 
     }
+    .contact-title-bg h1, .servicios-title-bg h1, .blog-title-bg h1 { font-size: 2em; }
+    .contact-title-bg p, .servicios-title-bg p, .blog-title-bg p { font-size: 1.05em; }
+    
 
-    .servicios-title-bg h1 { font-size: 2.2em; }
-    .servicios-title-bg p { font-size: 1.1em; }
-    .services-grid { grid-template-columns: 1fr; /* Una columna en móviles */ }
+    .services-grid { grid-template-columns: 1fr; }
+    .service-card { padding: 20px; }
+    .service-card-icon { font-size: 2.2em; margin-bottom: 15px;}
+    .service-card-title { font-size: 1.3em; }
 
-    .blog-title-bg h1 { font-size: 2.2em; }
-    .blog-title-bg p { font-size: 1.1em; }
-    .blog-grid { grid-template-columns: 1fr; /* Una columna en móviles */ }
+    .blog-grid { grid-template-columns: 1fr; }
+    .blog-post-card { margin-bottom: 20px; } 
+    .blog-post-content { padding: 20px; }
+    .blog-post-title { font-size: 1.2em; }
 
 
     .footer-content {
